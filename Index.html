@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>Vaidik ❤️ Nivedita — 1 Year</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="card-scene">
+  <audio id="bgm" loop preload="auto">
+    <source src="assets/soft_piano.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Animated background -->
+  <div class="floating-hearts"></div>
+
+  <div class="card-container" id="cardContainer">
+    <!-- Front cover -->
+    <div class="card-front fade-in" id="frontCard">
+      <h1>Vaidik ❤️ Nivedita</h1>
+      <h2>Happy 1 Year Anniversary</h2>
+      <p>Destiny brought us together — and every moment since has been magic.</p>
+      <button class="btn" id="openBtn">Open Our Story</button>
+    </div>
+
+    <!-- Inside pages -->
+    <div class="card-inside hidden" id="insideCard">
+      <div class="book" id="book">
+        <div class="page active">
+          <h3>Event Ground, Samudra Township — Mundra</h3>
+          <p>I approached you and that brave hello led to long talks that stretched till 1am, 2am — nights that became our normal.</p>
+          <img src="assets/photos/1.jpg" class="photo" alt="First meet" />
+        </div>
+        <div class="page">
+          <h3>Garden, Samudra Township</h3>
+          <p>Those peaceful cold nights and endless laughter.</p>
+          <img src="assets/photos/2.jpg" class="photo" alt="Garden" />
+        </div>
+        <div class="page">
+          <h3>Your Room</h3>
+          <p>Our room, our warmth, our peace.</p>
+          <img src="assets/photos/3.jpg" class="photo" alt="Room" />
+        </div>
+        <div class="page">
+          <h3>Rawalpir Beach — Mandvi</h3>
+          <p>The wind, the waves, the two of us.</p>
+          <img src="assets/photos/6.jpg" class="photo" alt="Beach" />
+        </div>
+        <div class="page">
+          <h3>Dwarka</h3>
+          <p>Our first trip — divine, peaceful, unforgettable.</p>
+          <img src="assets/photos/11.jpg" class="photo" alt="Dwarka Trip" />
+        </div>
+        <div class="page">
+          <h3>Atmosphere — Pune</h3>
+          <p>Our first trip away — and our first public kiss.</p>
+          <img src="assets/photos/14.jpg" class="photo" alt="Pune" />
+        </div>
+        <div class="page">
+          <h3>The Mantra One — Ahmedabad</h3>
+          <p>Two months apart — and then we met.</p>
+          <img src="assets/photos/15.jpg" class="photo" alt="Ahmedabad" />
+        </div>
+        <div class="page end">
+          <h2>Destiny. Ethereal. Ever-growing.</h2>
+          <p>Doesn’t feel like just a year — it feels like forever.</p>
+          <p>Every day feels bright & lovely✨✨ with you..</p>
+          <p>We laugh, we hug, we love❤❤.</p>
+          <p>You’re my Jaaannnn💖💖💖, my everything.</p>
+          <p>Happy one year — my dream came true! 🌸.</p>
+          <p class="end-note">💞 Happy Anniversary 💞</p>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button id="prevBtn" class="btn small">⟵ Prev</button>
+        <button id="nextBtn" class="btn small">Next ⟶</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+<script>
+function createFallingElements(className, emojiArray) {
+const container = document.querySelector(className);
+setInterval(() => {
+const el = document.createElement('div');
+el.textContent = emojiArray[Math.floor(Math.random() * emojiArray.length)];
+el.style.left = Math.random() * 100 + 'vw';
+el.style.fontSize = Math.random() * 24 + 16 + 'px';
+el.style.animationDuration = (8 + Math.random() * 5) + 's';
+el.classList.add(className === '.falling-hearts' ? 'heart' : 'flower');
+container.appendChild(el);
+setTimeout(() => el.remove(), 10000);
+}, 500);
+}
+
+
+createFallingElements('.falling-hearts', ['💖', '💞', '💕', '💗']);
+createFallingElements('.falling-flowers', ['🌸', '🌷', '🌺', '💐']);
+</script>
+</body>
+</html>

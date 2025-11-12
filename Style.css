@@ -1,0 +1,221 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.card-scene {
+  background: radial-gradient(circle at center, #2b0016, #3a0026, #000010);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  position: relative;
+}
+
+/* Floating hearts and flowers */
+.floating-hearts::before,
+.floating-hearts::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/hearts.png");
+  background-size: 80px;
+  animation: floatHearts 20s linear infinite;
+  opacity: 0.12;
+  filter: hue-rotate(310deg);
+}
+
+.floating-hearts::after {
+  animation-delay: 10s;
+  opacity: 0.25;
+}
+
+@keyframes floatHearts {
+  from { background-position: 0 100%; }
+  to { background-position: 0 -100%; }
+}
+
+/* Card */
+.card-container {
+  position: relative;
+  width: min(90vw, 450px);
+  height: min(85vh, 680px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255, 105, 155, 0.35);
+  overflow: hidden;
+  background: radial-gradient(circle at top left, #ff80b3, #ff4d94, #99004d);
+}
+
+/* Front cover */
+.card-front {
+  position: absolute;
+  background: linear-gradient(135deg, #ffb6d9, #ff94c2);
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #400028;
+  padding: 10%;
+  text-align: center;
+  z-index: 2;
+  animation: fadeIn 2s ease forwards;
+}
+
+.fade-in {
+  opacity: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Inside card */
+.card-inside {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 192, 220, 0.08);
+  border-radius: 20px;
+  padding: 4%;
+  text-align: center;
+  animation: fadeUp 1.5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Buttons */
+.btn {
+  background: linear-gradient(90deg, #ff7bac, #ffb3d9);
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  color: #3b0022;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(255, 100, 160, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(255, 140, 180, 0.5);
+}
+.btn.small {
+  font-size: 13px;
+  padding: 8px 12px;
+}
+
+/* Story pages */
+.book {
+  position: relative;
+  width: 100%;
+  height: 85%;
+  overflow: hidden;
+}
+
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  background: rgba(255, 160, 200, 0.06);
+  box-shadow: 0 0 15px rgba(255, 160, 200, 0.08);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 1s ease, transform 1s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5%;
+  text-align: center;
+}
+
+.page.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.page h3 {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  margin-bottom: 0.4em;
+  color: #ffd9ec;
+}
+
+.page p {
+  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  line-height: 1.5em;
+  margin-bottom: 1em;
+  color: #ffe6f2;
+}
+
+.page img.photo {
+  width: 100%;
+  height: auto;
+  max-height: 60%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(255, 80, 150, 0.4);
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.end-note {
+  margin-top: 10px;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: #ffb8d9;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .card-container {
+    width: 90vw;
+    height: 80vh;
+  }
+  .page img.photo {
+    max-height: 45%;
+  }
+}
+.falling {
+  position: absolute;
+  top: -10px;
+  user-select: none;
+  pointer-events: none;
+  animation-name: fallDown;
+  animation-timing-function: linear;
+}
+
+@keyframes fallDown {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
